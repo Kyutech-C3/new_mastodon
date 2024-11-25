@@ -2219,6 +2219,7 @@ en:
     title: The terms of service of %{domain} are changing
   themes:
     default: Mastodon
+    gruvbox: gruvbox
     suumo: Suumo
   time:
     formats:
