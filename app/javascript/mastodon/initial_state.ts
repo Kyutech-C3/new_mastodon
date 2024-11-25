@@ -11,6 +11,8 @@ interface InitialStateMeta {
   admin: string;
   boost_modal?: boolean;
   quick_boosting?: boolean;
+  c3_official_site_url?: string;
+  c3_toybox_url?: string;
   delete_modal?: boolean;
   missing_alt_text_modal?: boolean;
   disable_swiping?: boolean;
@@ -109,6 +111,8 @@ export const activityApiEnabled = getMeta('activity_api_enabled');
 export const autoPlayGif = getMeta('auto_play_gif');
 export const boostModal = getMeta('boost_modal');
 export const quickBoosting = getMeta('quick_boosting');
+export const c3_official_site_url = getMeta('c3_official_site_url');
+export const c3_toybox_url = getMeta('c3_toybox_url');
 export const deleteModal = getMeta('delete_modal');
 export const missingAltTextModal = getMeta('missing_alt_text_modal');
 export const disableSwiping = getMeta('disable_swiping');
