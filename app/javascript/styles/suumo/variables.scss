@@ -1,0 +1,35 @@
+@use '../mastodon/functions' as *;
+// Dependent colors
+$black: #0c1505;
+
+$classic-base-color: #18290a;
+$classic-primary-color: #9baec8;
+$classic-secondary-color: #d9e1e8;
+$classic-highlight-color: #62a527;
+
+$suumo-highlight-color: #6eb92b;
+
+@use '../mastodon/variables' with (
+  // Dependent colors
+  $ui-base-color: $classic-base-color,
+  $ui-primary-color: $classic-primary-color,
+  $ui-secondary-color: $classic-secondary-color,
+
+  // Differences
+  $ui-highlight-color: $suumo-highlight-color,
+
+  $darker-text-color: lighten($classic-primary-color, 20%),
+  $dark-text-color: lighten($classic-primary-color, 12%),
+  $secondary-text-color: lighten($classic-secondary-color, 6%),
+  $highlight-text-color: $classic-highlight-color,
+  $action-button-color: #8d9ac2,
+
+  $inverted-text-color: $black,
+  $lighter-text-color: darken($classic-base-color, 6%),
+  $light-text-color: darken($classic-primary-color, 40%),
+
+  $ui-button-background-color: $classic-highlight-color,
+  $ui-button-focus-background-color: $classic-secondary-color,
+  $ui-button-focus-outline-color: $suumo-highlight-color,
+  $ui-button-tertiary-color: $suumo-highlight-color
+);
