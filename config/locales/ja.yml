@@ -1771,6 +1771,7 @@ ja:
     contrast: Mastodon (ハイコントラスト)
     default: Mastodon (ダーク)
     mastodon-light: Mastodon (ライト)
+    suumo: スーモ
     system: 自動 (システムのテーマを使用)
   time:
     formats:

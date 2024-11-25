@@ -1805,6 +1805,7 @@ en:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
+    suumo: Suumo
     system: Automatic (use system theme)
   time:
     formats:
