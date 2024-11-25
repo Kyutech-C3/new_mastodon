@@ -15,6 +15,14 @@ class InitialStateSerializer < ActiveModel::Serializer
   def meta
     store = default_meta_store
 
+    if ENV['C3_OFFICIAL_SITE_URL'].present?
+      store[:c3_official_site_url] = ENV.fetch('C3_OFFICIAL_SITE_URL')
+    end
+
+    if ENV['C3_TOYBOX_URL'].present?
+      store[:c3_toybox_url] = ENV.fetch('C3_TOYBOX_URL')
+    end
+
     if object.current_account
       store[:me]                = object.current_account.id.to_s
       store[:boost_modal]       = object_account_user.setting_boost_modal
