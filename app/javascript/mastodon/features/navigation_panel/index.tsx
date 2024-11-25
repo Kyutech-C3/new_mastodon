@@ -14,9 +14,11 @@ import AddIcon from '@/material-icons/400-24px/add.svg?react';
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import BookmarksActiveIcon from '@/material-icons/400-24px/bookmarks-fill.svg?react';
 import BookmarksIcon from '@/material-icons/400-24px/bookmarks.svg?react';
+import ComputerIcon from '@/material-icons/400-24px/computer.svg?react';
 import HomeActiveIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home.svg?react';
 import InfoIcon from '@/material-icons/400-24px/info.svg?react';
+import InventoryIcon from '@/material-icons/400-24px/inventory_2-fill.svg?react';
 import NotificationsActiveIcon from '@/material-icons/400-24px/notifications-fill.svg?react';
 import NotificationsIcon from '@/material-icons/400-24px/notifications.svg?react';
 import PersonAddActiveIcon from '@/material-icons/400-24px/person_add-fill.svg?react';
@@ -35,7 +37,7 @@ import { Search } from 'mastodon/features/compose/components/search';
 import { ColumnLink } from 'mastodon/features/ui/components/column_link';
 import { useBreakpoint } from 'mastodon/features/ui/hooks/useBreakpoint';
 import { useIdentity } from 'mastodon/identity_context';
-import { timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
+import { c3_official_site_url, c3_toybox_url, timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
 import { transientSingleColumn } from 'mastodon/is_mobile';
 import { selectUnreadNotificationGroupsCount } from 'mastodon/selectors/notifications';
 import { useAppSelector, useAppDispatch } from 'mastodon/store';
@@ -87,6 +89,10 @@ const messages = defineMessages({
   },
   logout: { id: 'navigation_bar.logout', defaultMessage: 'Logout' },
   compose: { id: 'tabs_bar.publish', defaultMessage: 'New Post' },
+
+  // C3のリンク追加で増えた分をここにまとめておく
+  officialSite: { id: 'external_url.official_site', defaultMessage: 'C3 Official Site' },
+  toybox: { id: 'external_url.toybox', defaultMessage: 'ToyBox' },
 });
 
 const NotificationsLink = () => {
@@ -305,6 +311,17 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
             />
 
             <hr />
+
+            {/* envファイルに一つでもURLがあればhrを作成しブロックを作る */}
+            {(c3_official_site_url || c3_toybox_url) && (
+              <>
+                {/* 公式サイトのURLがあればリンクを表示 */}
+                {c3_official_site_url && <ColumnLink transparent href={c3_official_site_url} target='_blank' rel='noreferrer noopener' icon='laptop' iconComponent={ComputerIcon} text={intl.formatMessage(messages.officialSite)} />}
+                {/* ToyBoxのURLがあればリンクを表示 */}
+                {c3_toybox_url && <ColumnLink transparent href={c3_toybox_url} target='_blank' rel='noreferrer noopener' icon='archive' iconComponent={InventoryIcon} text={intl.formatMessage(messages.toybox)} />}
+                <hr />
+              </>
+            )}
 
             <ColumnLink
               transparent

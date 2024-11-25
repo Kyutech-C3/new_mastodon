@@ -13,6 +13,8 @@
  * @property {boolean} activity_api_enabled
  * @property {string} admin
  * @property {boolean=} boost_modal
+ * @property {string | null} c3_official_site_url
+ * @property {string | null} c3_toybox_url
  * @property {boolean=} delete_modal
  * @property {boolean=} missing_alt_text_modal
  * @property {boolean=} disable_swiping
@@ -88,6 +90,8 @@ const getMeta = (prop) => initialState?.meta && initialState.meta[prop];
 export const activityApiEnabled = getMeta('activity_api_enabled');
 export const autoPlayGif = getMeta('auto_play_gif');
 export const boostModal = getMeta('boost_modal');
+export const c3_official_site_url = getMeta('c3_official_site_url');
+export const c3_toybox_url = getMeta('c3_toybox_url');
 export const deleteModal = getMeta('delete_modal');
 export const missingAltTextModal = getMeta('missing_alt_text_modal');
 export const disableSwiping = getMeta('disable_swiping');
