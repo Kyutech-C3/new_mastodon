@@ -1,0 +1,20 @@
+// Colors
+$classic-base-color: #282828;
+$classic-primary-color: #D5C4A1;
+$classic-secondary-color: #689D6A;
+$classic-highlight-color: #8EC07C;
+
+@use '../mastodon/variables' with (
+  $ui-base-color: $classic-base-color,
+  $ui-base-lighter-color: #665C54,
+  $ui-primary-color: $classic-primary-color,
+  $ui-secondary-color: $classic-secondary-color,
+  $ui-highlight-color: $classic-highlight-color,
+  $primary-text-color: #EBDBB2,
+
+  $ui-button-color: $classic-base-color,
+  $ui-button-background-color: $classic-highlight-color,
+  $ui-button-focus-background-color: $classic-secondary-color,
+  $ui-button-focus-outline-color: $classic-highlight-color,
+  $ui-button-tertiary-color: $classic-highlight-color
+)
