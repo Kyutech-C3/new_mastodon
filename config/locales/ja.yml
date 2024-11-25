@@ -1918,6 +1918,7 @@ ja:
     title: "%{domain} の利用規約が変更されています"
   themes:
     default: Mastodon
+    gruvbox: gruvbox
     suumo: スーモ
   time:
     formats:
