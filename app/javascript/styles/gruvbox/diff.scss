@@ -1,0 +1,24 @@
+// Columns width
+// .column {
+//  flex-grow: 1;
+// }
+
+// Stream
+.activity-stream {
+  .status.light {
+    .status__content {
+      color: var(--color-text-primary);
+    }
+
+    .display-name {
+      strong {
+        color: var(--color-text-primary);
+      }
+    }
+  }
+}
+
+// 通知バッヂなど
+.icon-with-badge__badge {
+  color: var(--color-text-on-brand-base);
+}
