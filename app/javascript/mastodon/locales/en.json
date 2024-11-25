@@ -366,6 +366,8 @@
   "explore.trending_links": "News",
   "explore.trending_statuses": "Posts",
   "explore.trending_tags": "Hashtags",
+  "external_url.official_site": "C3 Official Site",
+  "external_url.toybox": "ToyBox",
   "featured_carousel.header": "{count, plural, one {Pinned Post} other {Pinned Posts}}",
   "featured_carousel.next": "Next",
   "featured_carousel.post": "Post",
