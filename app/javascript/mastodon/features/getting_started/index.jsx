@@ -11,10 +11,12 @@ import { connect } from 'react-redux';
 
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import BookmarksIcon from '@/material-icons/400-24px/bookmarks-fill.svg?react';
+import ComputerIcon from '@/material-icons/400-24px/computer.svg?react';
 import ExploreIcon from '@/material-icons/400-24px/explore.svg?react';
 import ModerationIcon from '@/material-icons/400-24px/gavel.svg?react';
 import PeopleIcon from '@/material-icons/400-24px/group.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
+import InventoryIcon from '@/material-icons/400-24px/inventory_2-fill.svg?react';
 import ListAltIcon from '@/material-icons/400-24px/list_alt.svg?react';
 import AdministrationIcon from '@/material-icons/400-24px/manufacturing.svg?react';
 import MenuIcon from '@/material-icons/400-24px/menu.svg?react';
@@ -27,6 +29,7 @@ import Column from 'mastodon/components/column';
 import ColumnHeader from 'mastodon/components/column_header';
 import LinkFooter from 'mastodon/features/ui/components/link_footer';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
+import { c3_official_site_url, c3_toybox_url } from 'mastodon/initial_state';
 import { canManageReports, canViewAdminDashboard } from 'mastodon/permissions';
 
 import { me, showTrends } from '../../initial_state';
@@ -59,6 +62,11 @@ const messages = defineMessages({
   personal: { id: 'navigation_bar.personal', defaultMessage: 'Personal' },
   security: { id: 'navigation_bar.security', defaultMessage: 'Security' },
   menu: { id: 'getting_started.heading', defaultMessage: 'Getting started' },
+
+  // C3のリンク追加で増えた分をここにまとめておく
+  c3: { id: 'navigation_bar.c3', defaultMessage: 'C3' },
+  officialSite: { id: 'external_url.official_site', defaultMessage: 'C3 Official Site' },
+  toybox: { id: 'external_url.toybox', defaultMessage: 'ToyBox' },
 });
 
 const mapStateToProps = state => ({
@@ -135,6 +143,19 @@ class GettingStarted extends ImmutablePureComponent {
 
       if (myAccount.get('locked') || unreadFollowRequests > 0) {
         navItems.push(<ColumnLink key='follow_requests' icon='user-plus' iconComponent={PersonAddIcon} text={intl.formatMessage(messages.follow_requests)} badge={badgeDisplay(unreadFollowRequests, 40)} to='/follow_requests' />);
+      }
+
+      // envファイルに一つでもURLがあればSubheadingを作成しブロックを作る
+      if (c3_official_site_url || c3_toybox_url) {
+        navItems.push(<ColumnSubheading key='header-c3' text={intl.formatMessage(messages.c3)} />)
+        // 公式サイトのURLがあればリンクを表示
+        if (c3_official_site_url) {
+          navItems.push(<ColumnLink key='official-site' icon='laptop' iconComponent={ComputerIcon} text={intl.formatMessage(messages.officialSite)} href={c3_official_site_url} target='_blank' />)
+        }
+        // ToyBoxのURLがあればリンクを表示
+        if (c3_toybox_url) {
+          navItems.push(<ColumnLink key='toybox' icon='archive' iconComponent={InventoryIcon} text={intl.formatMessage(messages.toybox)} href={c3_toybox_url} target='_blank' />)
+        }
       }
 
       navItems.push(
