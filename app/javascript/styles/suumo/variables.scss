@@ -1,0 +1,43 @@
+@use '../mastodon/theme/dark';
+@use '../mastodon/theme/utils';
+@use '../custom/functions' as *;
+
+// ライトテーマを無視する暫定処理
+[data-color-scheme='light'] {
+  color-scheme: dark;
+
+  @include dark.tokens;
+  @include utils.invert-on-light;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include dark.contrast-overrides;
+  }
+}
+
+// Dependent colors
+$black: #0c1505;
+
+$classic-base-color: #18290a;
+$classic-primary-color: #9baec8;
+$classic-secondary-color: #d9e1e8;
+$classic-highlight-color: #62a527;
+
+$suumo-highlight-color: #6eb92b;
+
+:root {
+  --color-text-primary: #{$classic-secondary-color};
+  --color-text-secondary: #{$classic-primary-color};
+  --color-text-tertiary: #{darken($classic-primary-color, 10)};
+  --color-text-inverted: #{$black};
+  --color-text-brand: #{$suumo-highlight-color};
+  --color-text-status-links: #{lighten($suumo-highlight-color, 12)};
+  --color-bg-primary: #{$classic-base-color};
+  --color-bg-secondary: #{lighten($classic-base-color, 5)};
+  --color-bg-tertiary: #{lighten($classic-base-color, 15)};
+  --color-bg-brand-base: #{$suumo-highlight-color};
+  --color-bg-brand-base-hover: #{$classic-secondary-color};
+  --color-bg-brand-soft: #{darken($suumo-highlight-color, 20)};
+  --color-bg-brand-softest: #{darken($suumo-highlight-color, 30)};
+  --color-border-brand-soft: var(--color-bg-brand-soft);
+}

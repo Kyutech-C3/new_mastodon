@@ -1,0 +1,8 @@
+// CSS Variable化に対応した互換関数
+@function lighten($css_color, $amount) {
+  @return #{hsl(from $css_color h s calc(l + $amount))};
+}
+
+@function darken($css_color, $amount) {
+  @return #{hsl(from $css_color h s calc(l - $amount))};
+}
