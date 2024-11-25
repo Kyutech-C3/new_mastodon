@@ -437,6 +437,8 @@
   "explore.trending_links": "ニュース",
   "explore.trending_statuses": "投稿",
   "explore.trending_tags": "ハッシュタグ",
+  "external_url.official_site": "C3 公式サイト",
+  "external_url.toybox": "ToyBox",
   "featured_carousel.header": "{count, plural, other {ピン留めされた投稿}}",
   "filter_modal.added.context_mismatch_explanation": "このフィルターカテゴリーはあなたがアクセスした投稿のコンテキストには適用されません。この投稿のコンテキストでもフィルターを適用するにはフィルターを編集する必要があります。",
   "filter_modal.added.context_mismatch_title": "コンテキストが一致しません！",
