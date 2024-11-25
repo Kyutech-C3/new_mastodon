@@ -1770,6 +1770,7 @@ ja:
   themes:
     contrast: Mastodon (ハイコントラスト)
     default: Mastodon (ダーク)
+    gruvbox: gruvbox
     mastodon-light: Mastodon (ライト)
     suumo: スーモ
     system: 自動 (システムのテーマを使用)
