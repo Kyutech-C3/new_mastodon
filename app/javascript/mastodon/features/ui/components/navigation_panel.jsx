@@ -30,12 +30,13 @@ import SearchIcon from '@/material-icons/400-24px/search.svg?react';
 import SettingsIcon from '@/material-icons/400-24px/settings.svg?react';
 import StarActiveIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarIcon from '@/material-icons/400-24px/star.svg?react';
+import elephantUIPlane from 'images/elephant_ui_plane.svg';
 import { fetchFollowRequests } from 'mastodon/actions/accounts';
 import { IconWithBadge } from 'mastodon/components/icon_with_badge';
 import { WordmarkLogo } from 'mastodon/components/logo';
 import { NavigationPortal } from 'mastodon/components/navigation_portal';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
-import { c3_official_site_url, c3_toybox_url, timelinePreview, trendsEnabled } from 'mastodon/initial_state';
+import { c3_official_site_url, c3_toybox_url, mascot, timelinePreview, trendsEnabled } from 'mastodon/initial_state';
 import { transientSingleColumn } from 'mastodon/is_mobile';
 import { canManageReports, canViewAdminDashboard } from 'mastodon/permissions';
 import { selectUnreadNotificationGroupsCount } from 'mastodon/selectors/notifications';
@@ -211,7 +212,10 @@ class NavigationPanel extends Component {
           </div>
         </div>
 
-        <div className='flex-spacer' />
+        {/* 右メニューとトレンドの間にマスコットを表示（トレンドが無ければメニューの下） */}
+        <div className='drawer__inner__mastodon navigation_icon'>
+          <img alt='' draggable='false' src={mascot || elephantUIPlane} />
+        </div>
 
         <NavigationPortal />
       </div>
