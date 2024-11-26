@@ -1,0 +1,16 @@
+// 非上級者向けUIのマスコット配置
+.drawer__inner__mastodon.navigation_icon {
+  // min-heightのせいでマスコットが潰れるので削除
+  min-height: unset;
+  background: none;
+
+  // ヘッダーが登場する分上にズラす
+  @media screen and (max-width: $no-gap-breakpoint - 1px) {
+    padding-bottom: $ui-header-height;
+  }
+
+  // 右メニューがアイコンのみになったら枠が小さいためマスコットを非表示
+  @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
+    display: none;
+  }
+}
