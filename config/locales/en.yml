@@ -2193,6 +2193,7 @@ en:
     review_link: Review terms of service
     title: The terms of service of %{domain} are changing
   themes:
+    c3: C3
     default: Mastodon
     gruvbox: gruvbox
     suumo: Suumo

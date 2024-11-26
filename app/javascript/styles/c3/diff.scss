@@ -1,0 +1,112 @@
+// スタートメニューの各項目
+.navigation-panel__menu .column-link {
+  color: var(--color-text-secondary);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background-color: var(--color-bg-brand-base);
+    color: var(--color-text-on-brand-base);
+  }
+}
+
+h1.column-header > button {
+  color: var(--color-text-secondary);
+}
+
+// ホームTLなどのカラムの最上部(「ホーム」などのカラム名表示)
+.column-header {
+  color: var(--color-text-secondary);
+}
+
+// カラム最上部のボタン類
+.column-header__button {
+  color: var(--color-text-secondary);
+
+  &.active,
+  &.active:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+// 設定画面のh2
+.admin-wrapper div.content h2 {
+  color: var(--color-text-secondary);
+}
+
+// 設定画面左のサイドバーのアクティブなタブ
+.admin-wrapper .sidebar ul {
+  a {
+    color: var(--color-text-secondary);
+  }
+
+  .simple-navigation-active-leaf a {
+    background-color: var(--color-bg-brand-base);
+    color: var(--color-text-on-brand-base);
+  }
+}
+
+// 設定->管理->ダッシュボードの「保留中の〇〇」
+.dashboard__quick-access {
+  color: var(--color-text-on-brand-base);
+}
+
+// 設定画面のリセットボタンなど
+.simple_form .button--dangerous {
+  color: var(--color-text-primary);
+}
+
+.muted .status__content,
+.muted .status__content a,
+.muted .status__content p,
+.muted .status__display-name strong {
+  color: #abab95;
+}
+
+// アカウント詳細画面の「投稿」「投稿と返信」など
+.account__section-headline a,
+.account__section-headline button,
+// 通知の上の「すべて」「返信」
+.notification__filter-bar a,
+.notification__filter-bar button {
+  color: var(--color-text-secondary);
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+
+  &.active {
+    color: var(--color-text-primary);
+  }
+}
+
+// 投稿のテキスト入力欄
+// .autosuggest-textarea .autosuggest-textarea__textarea {
+//   color: var(--color-text-brand);
+// }
+
+// 投稿欄の画像アップロードボタンなど(アクティブ時)
+.compose-form__actions .icon-button.active {
+  color: var(--color-text-on-brand-base);
+}
+
+// 通知バッヂなど
+.icon-with-badge__badge {
+  color: var(--color-text-on-brand-base);
+}
+
+// 縦長UIでの最下部ナビゲーションバー
+.ui__navigation-bar__item {
+  color: var(--color-text-secondary);
+
+  &.active {
+    background-color: var(--color-bg-brand-base);
+    color: var(--color-text-on-brand-base);
+  }
+}
+
+// 投稿下部のハッシュタグバー
+.hashtag-bar {
+  color: var(--color-text-secondary);
+}
