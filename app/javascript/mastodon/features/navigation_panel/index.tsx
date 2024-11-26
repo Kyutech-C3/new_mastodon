@@ -28,6 +28,7 @@ import SettingsIcon from '@/material-icons/400-24px/settings.svg?react';
 import StarActiveIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarIcon from '@/material-icons/400-24px/star.svg?react';
 import TrendingUpIcon from '@/material-icons/400-24px/trending_up.svg?react';
+import elephantUIPlane from 'images/elephant_ui_plane.svg';
 import { fetchFollowRequests } from 'mastodon/actions/accounts';
 import { openNavigation, closeNavigation } from 'mastodon/actions/navigation';
 import { Account } from 'mastodon/components/account';
@@ -37,7 +38,7 @@ import { Search } from 'mastodon/features/compose/components/search';
 import { ColumnLink } from 'mastodon/features/ui/components/column_link';
 import { useBreakpoint } from 'mastodon/features/ui/hooks/useBreakpoint';
 import { useIdentity } from 'mastodon/identity_context';
-import { c3_official_site_url, c3_toybox_url, timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
+import { c3_official_site_url, c3_toybox_url, mascot, timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
 import { transientSingleColumn } from 'mastodon/is_mobile';
 import { selectUnreadNotificationGroupsCount } from 'mastodon/selectors/notifications';
 import { useAppSelector, useAppDispatch } from 'mastodon/store';
@@ -354,7 +355,12 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
         )}
       </div>
 
-      <div className='flex-spacer' />
+      {/* 非上級者UIなら右メニューとトレンドの間にマスコットを表示（トレンドが無ければメニューの下） */}
+      {!multiColumn && (
+        <div className='drawer__inner__mastodon navigation_icon'>
+          <img alt='' draggable='false' src={mascot || elephantUIPlane} />
+        </div>
+      )}
 
       <Trends />
     </div>
