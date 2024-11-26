@@ -21,7 +21,12 @@ export const ContentWarning: React.FC<{
       onClick={onClick}
       variant={BannerVariant.Warning}
     >
-      <EmojiHTML as='span' htmlString={text} extraEmojis={status.emojis} />
+      <EmojiHTML
+        as='span'
+        htmlString={text}
+        extraEmojis={status.emojis}
+        canBigIcon
+      />
     </StatusBanner>
   );
 };
