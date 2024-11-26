@@ -16,6 +16,7 @@ import { identityContextPropShape, withIdentity } from 'mastodon/identity_contex
 import { languages as preloadedLanguages } from 'mastodon/initial_state';
 
 import { EmojiHTML } from './emoji/html';
+import { checkOnlyIconStatus } from '../features/emoji/utils';
 import { HandledLink } from './status/handled_link';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
@@ -192,6 +193,7 @@ class StatusContent extends PureComponent {
     const renderTranslate = this.props.onTranslate && this.props.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
     const content = statusContent ?? getStatusContent(status);
+    const bigIcon = checkOnlyIconStatus(content);
     const language = status.getIn(['translation', 'language']) || status.get('language');
     const classNames = classnames('status__content', {
       'status__content--with-action': this.props.onClick && this.props.history,
@@ -228,6 +230,7 @@ class StatusContent extends PureComponent {
               htmlString={content}
               extraEmojis={status.get('emojis')}
               onElement={this.handleElement}
+              bigIcon={bigIcon}
             />
 
             {poll}
@@ -246,6 +249,7 @@ class StatusContent extends PureComponent {
             htmlString={content}
             extraEmojis={status.get('emojis')}
             onElement={this.handleElement}
+            bigIcon={bigIcon}
           />
 
           {poll}
