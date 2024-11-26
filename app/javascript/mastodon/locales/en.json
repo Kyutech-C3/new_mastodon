@@ -590,6 +590,7 @@
   "copy_icon_button.copy_this_text": "Copy link to clipboard",
   "copypaste.copied": "Copied",
   "copypaste.copy_to_clipboard": "Copy to clipboard",
+  "custom.caution_message": "All content posted to this Mastodon instance as public or unlisted can be viewed by anyone on the internet.\nPlease exercise caution regarding online etiquette, including the handling of personal information and copyright, when posting.",
   "custom_homepage.about": "About",
   "custom_homepage.about_this_server": "About this server",
   "custom_homepage.administered_by": "Administered by",
