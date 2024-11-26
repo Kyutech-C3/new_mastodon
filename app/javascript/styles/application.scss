@@ -22,3 +22,6 @@
 @use 'mastodon/dashboard';
 @use 'mastodon/rtl';
 @use 'mastodon/rich_text';
+
+// テーマによらない追加のStyleを以下にimportしていく
+@use 'custom/literacy_caution';
