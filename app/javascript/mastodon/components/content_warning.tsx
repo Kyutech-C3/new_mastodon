@@ -32,6 +32,7 @@ export const ContentWarning: React.FC<{
         as='span'
         htmlString={text}
         extraEmojis={status.get('emojis') as List<CustomEmoji>}
+        canBigIcon={true}
       />
     </StatusBanner>
   );

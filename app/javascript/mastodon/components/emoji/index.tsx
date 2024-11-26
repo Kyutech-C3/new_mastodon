@@ -24,12 +24,14 @@ import { AnimateEmojiContext, CustomEmojiContext } from './context';
 
 interface EmojiProps {
   code: string;
+  bigIcon?: boolean;
   showFallback?: boolean;
   showLoading?: boolean;
 }
 
 export const Emoji: FC<EmojiProps> = ({
   code,
+  bigIcon = false,  // 絵文字の拡大表示の有無
   showFallback = true,
   showLoading = true,
 }) => {
@@ -82,7 +84,7 @@ export const Emoji: FC<EmojiProps> = ({
         src={animate ? state.data.url : state.data.static_url}
         alt={shortcode}
         title={shortcode}
-        className='emojione custom-emoji'
+        className={'emojione custom-emoji' + (bigIcon ? ' big_icon' : '')}
         loading='lazy'
       />
     );
@@ -98,7 +100,7 @@ export const Emoji: FC<EmojiProps> = ({
       src={src}
       alt={state.data.unicode}
       title={state.data.label}
-      className={classNames('emojione', inversionClass)}
+      className={classNames('emojione', inversionClass) + (bigIcon ? ' big_icon' : '')}
       loading='lazy'
     />
   );
@@ -107,12 +109,18 @@ export const Emoji: FC<EmojiProps> = ({
 /**
  * Takes a text string and converts it to an array of React nodes.
  * @param text The text to be tokenized and converted.
+ * @param canBigIcon 呼び出し元が投稿かどうか(絵文字を拡大する必要があるか)
  */
-export function textToEmojis(text: string) {
-  return tokenizeText(text).map((token, index) => {
+export function textToEmojis(text: string, canBigIcon: boolean = false) {
+  const tokenizedText = tokenizeText(text);
+  // textを分割したトークンがすべて絵文字なら拡大表示
+  const bigIcon = canBigIcon && tokenizedText.filter(
+    (token) => (typeof token === 'string') && (token.match(/^[ 　\r\t\s\n]+$/) === null)
+  ).length === 0;
+  return tokenizedText.map((token, index) => {
     if (typeof token === 'string') {
       return token;
     }
-    return <Emoji code={token.code} key={`emoji-${token.code}-${index}`} />;
+    return <Emoji code={token.code} bigIcon={bigIcon} key={`emoji-${token.code}-${index}`} />;
   });
 }

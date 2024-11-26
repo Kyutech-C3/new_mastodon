@@ -227,6 +227,7 @@ class StatusContent extends PureComponent {
               htmlString={content}
               extraEmojis={status.get('emojis')}
               onElement={this.handleElement}
+              canBigIcon={true}
             />
 
             {poll}
@@ -245,6 +246,7 @@ class StatusContent extends PureComponent {
             htmlString={content}
             extraEmojis={status.get('emojis')}
             onElement={this.handleElement}
+            canBigIcon={true}
           />
 
           {poll}

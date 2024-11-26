@@ -24,5 +24,6 @@
 @use 'mastodon/rich_text';
 
 // テーマによらない追加のStyleを以下にimportしていく
+@use 'custom/big-icon';
 @use 'custom/literacy_caution';
 @use 'custom/mascot-for-basic-ui';
