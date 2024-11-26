@@ -10,6 +10,23 @@ const makeEmojiMap = emojis => emojis.reduce((obj, emoji) => {
   return obj;
 }, {});
 
+// HTMLになっているcontentを入力したときの文章にだいたい戻す関数
+// TODO: こういう関数作らなくてもありそうなので、あればそちらに差し替える
+const rewrite = txt => {
+  // 改行から置き換えられたタグを半角スペースに置き換える
+  let edit_txt = txt.replaceAll('</p><p>', ' ').replaceAll('<br />', ' ')
+  // innerHTMLを使用して不要なタグを取り除く
+  const e = document.createElement('div');
+  e.innerHTML = edit_txt;
+  return e.innerText;
+}
+// カスタム絵文字や空白、改行のみで構成された投稿か判断する
+// TODO: ここboolean型にしたい
+const checkOnlyIconStatus = content => {
+  const trimContent = rewrite(content).trim();
+  return trimContent.match("^:[0-9a-zA-Z_]+:([ 　\r\t\s\n]+:[0-9a-zA-Z_]+:)*$");
+};
+
 export function searchTextFromRawStatus (status) {
   const spoilerText   = status.spoiler_text || '';
   const searchContent = ([spoilerText, status.content].concat((status.poll && status.poll.options) ? status.poll.options.map(option => option.title) : [])).concat(status.media_attachments.map(att => att.description)).join('\n\n').replace(/<br\s*\/?>/g, '\n').replace(/<\/p><p>/g, '\n\n');
@@ -75,9 +92,11 @@ export function normalizeStatus(status, normalOldStatus) {
     const spoilerText   = normalStatus.spoiler_text || '';
     const searchContent = ([spoilerText, status.content].concat((status.poll && status.poll.options) ? status.poll.options.map(option => option.title) : [])).concat(status.media_attachments.map(att => att.description)).join('\n\n').replace(/<br\s*\/?>/g, '\n').replace(/<\/p><p>/g, '\n\n');
     const emojiMap      = makeEmojiMap(normalStatus.emojis);
+    // contentがカスタム絵文字だけかを判断する(nullでなければカスタム絵文字だけ)
+    const toBigIcon = checkOnlyIconStatus(normalStatus.content);
 
     normalStatus.search_index = domParser.parseFromString(searchContent, 'text/html').documentElement.textContent;
-    normalStatus.contentHtml  = emojify(normalStatus.content, emojiMap);
+    normalStatus.contentHtml  = emojify(normalStatus.content, emojiMap, toBigIcon);
     normalStatus.spoilerHtml  = emojify(escapeTextContentForBrowser(spoilerText), emojiMap);
     normalStatus.hidden       = expandSpoilers ? false : spoilerText.length > 0 || normalStatus.sensitive;
   }
@@ -99,12 +118,14 @@ export function normalizeStatus(status, normalOldStatus) {
 
 export function normalizeStatusTranslation(translation, status) {
   const emojiMap = makeEmojiMap(status.get('emojis').toJS());
+  // contentがカスタム絵文字だけかを判断する(nullでなければカスタム絵文字だけ)
+  const toBigIcon = checkOnlyIconStatus(translation.content);
 
   const normalTranslation = {
     detected_source_language: translation.detected_source_language,
     language: translation.language,
     provider: translation.provider,
-    contentHtml: emojify(translation.content, emojiMap),
+    contentHtml: emojify(translation.content, emojiMap, toBigIcon),
     spoilerHtml: emojify(escapeTextContentForBrowser(translation.spoiler_text), emojiMap),
     spoiler_text: translation.spoiler_text,
   };

@@ -1,0 +1,14 @@
+// 絵文字単体の投稿の絵文字を大きくする
+// TLなど一覧で表示する際
+.emojione.custom-emoji.big_icon {
+    width: $big-icon-size;
+    height: $big-icon-size;
+    // 画像が重なるのを修正
+    margin: 0 -0.1em 0.1ex;
+}
+
+// 詳細で表示する際
+.detailed-status .emojione.custom-emoji.big_icon {
+    width: $detailed-big-icon-size;
+    height: $detailed-big-icon-size;
+}
