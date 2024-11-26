@@ -71,4 +71,11 @@ namespace :settings do
   resources :sessions, only: [:destroy]
   resources :featured_tags, only: [:index, :create, :destroy]
   resources :login_activities, only: [:index]
+
+  # settings/ 以下にrequest_custom_emojisのルーティングを追加
+  resources :request_custom_emojis, only: [:index, :new, :create] do
+    collection do
+      post :batch
+    end
+  end
 end

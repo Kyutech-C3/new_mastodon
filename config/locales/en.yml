@@ -1707,6 +1707,21 @@ en:
     preferences: Preferences
     profile: Public profile
     relationships: Follows and followers
+    request_custom_emojis:
+      action:
+        approve: Approve
+        delete: Delete request
+        reject: Reject
+      created_msg: Emoji successfully requested!
+      errors:
+        already_exists: Already exists as a custom emoji
+        no_request_selected: No requests were changed as none were selected
+      state:
+        approved: Approved
+        pending: Pending
+        rejected: Rejected
+      title: Request custom_emojis
+      upload: Request
     severed_relationships: Severed relationships
     statuses_cleanup: Automated post deletion
     strikes: Moderation strikes

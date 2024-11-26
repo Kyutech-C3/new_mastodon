@@ -1677,6 +1677,21 @@ ja:
     preferences: ユーザー設定
     profile: プロフィール
     relationships: フォロー・フォロワー
+    request_custom_emojis:
+      action:
+        approve: 承認
+        delete: 申請の削除
+        reject: 不承認
+      created_msg: 絵文字の申請に成功しました！
+      errors:
+        already_exists: はすでにカスタム絵文字として存在します
+        no_request_selected: 何も選択されていないため、変更されていません
+      state:
+        approved: 承認済
+        pending: 申請中
+        rejected: 不承認
+      title: カスタム絵文字の申請
+      upload: 申請
     severed_relationships: 途切れたフォロー関係
     statuses_cleanup: 投稿の自動削除
     strikes: モデレーションストライク
