@@ -1,0 +1,43 @@
+@use '../mastodon/tokens/theme/dark';
+@use '../mastodon/tokens/theme/utils';
+@use '../custom/functions' as *;
+
+// ライトテーマを無視する暫定処理
+[data-color-scheme='light'] {
+  color-scheme: dark;
+
+  @include dark.tokens;
+  @include utils.invert-on-light;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include dark.contrast-overrides;
+  }
+}
+
+// Colors
+$classic-base-color: #202020;
+$classic-primary-color: #ff0;
+$classic-secondary-color: #6e6e00;
+$classic-highlight-color: #ff0;
+
+$classic-tertiary-color: #262600;
+
+:root {
+  --color-text-primary: #fff;
+  --color-text-secondary: #{$classic-primary-color};
+  --color-text-tertiary: #{$classic-secondary-color};
+  --color-text-brand: #{$classic-highlight-color};
+  --color-text-brand-soft: #{$classic-highlight-color};
+  --color-text-brand-on-inverted: #{darken($classic-primary-color, 10)};
+  --color-text-on-brand-base: #{$classic-base-color};
+  --color-text-status-links: #{$classic-highlight-color};
+  --color-bg-primary: #{$classic-base-color};
+  --color-bg-secondary: #{lighten($classic-base-color, 5)};
+  --color-bg-tertiary: #{lighten($classic-base-color, 15)};
+  --color-bg-brand-base: #{$classic-highlight-color};
+  --color-bg-brand-base-hover: #{$classic-secondary-color};
+  --color-bg-brand-soft: #{$classic-secondary-color};
+  --color-bg-brand-softest: #{$classic-tertiary-color};
+  --color-border-brand-soft: #{$classic-secondary-color};
+}
