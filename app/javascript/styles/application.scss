@@ -22,3 +22,6 @@
 @import 'mastodon/rtl';
 @import 'mastodon/accessibility';
 @import 'mastodon/rich_text';
+
+// テーマによらない追加のStyleを以下にimportしていく
+@import 'custom/literacy_caution';
