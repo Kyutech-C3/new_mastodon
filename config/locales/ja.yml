@@ -1768,6 +1768,7 @@ ja:
   tags:
     does_not_match_previous_name: 以前の名前と一致しません
   themes:
+    c3: C3
     contrast: Mastodon (ハイコントラスト)
     default: Mastodon (ダーク)
     gruvbox: gruvbox

@@ -1802,6 +1802,7 @@ en:
   tags:
     does_not_match_previous_name: does not match the previous name
   themes:
+    c3: C3
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
     gruvbox: gruvbox
