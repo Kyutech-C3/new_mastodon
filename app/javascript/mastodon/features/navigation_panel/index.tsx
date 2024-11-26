@@ -9,6 +9,7 @@ import type { Map as ImmutableMap } from 'immutable';
 
 import { animated, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
+import elephantUIPlane from 'images/elephant_ui_plane.svg';
 
 import { useAccount } from '@/mastodon/hooks/useAccount';
 import AddIcon from '@/material-icons/400-24px/add.svg?react';
@@ -44,6 +45,7 @@ import { useIdentity } from 'mastodon/identity_context';
 import {
   c3_official_site_url,
   c3_toybox_url,
+  mascot,
   localLiveFeedAccess,
   remoteLiveFeedAccess,
   trendsEnabled,
@@ -463,7 +465,12 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
         )}
       </ul>
 
-      <div className='flex-spacer' />
+      {/* 非上級者UIなら右メニューとトレンドの間にマスコットを表示（トレンドが無ければメニューの下） */}
+      {!multiColumn && (
+        <div className='drawer__inner__mastodon navigation_icon'>
+          <img alt='' draggable='false' src={mascot ?? elephantUIPlane} />
+        </div>
+      )}
 
       <Trends />
     </nav>
