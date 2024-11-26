@@ -4,6 +4,7 @@ import type { CustomEmoji } from '../models/custom_emoji';
 import type { Status } from '../models/status';
 
 import { EmojiHTML } from './emoji/html';
+import { checkOnlyIconStatus } from '../features/emoji/utils';
 import { StatusBanner, BannerVariant } from './status_banner';
 
 export const ContentWarning: React.FC<{
@@ -21,6 +22,7 @@ export const ContentWarning: React.FC<{
   if (typeof text !== 'string' || text.length === 0) {
     return null;
   }
+  const bigIcon = checkOnlyIconStatus(text)
 
   return (
     <StatusBanner
@@ -32,6 +34,7 @@ export const ContentWarning: React.FC<{
         as='span'
         htmlString={text}
         extraEmojis={status.get('emojis') as List<CustomEmoji>}
+        bigIcon={bigIcon}
       />
     </StatusBanner>
   );
