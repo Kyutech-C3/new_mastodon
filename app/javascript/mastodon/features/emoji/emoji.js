@@ -27,7 +27,7 @@ const emojiFilename = (filename, colorScheme) => {
   return borderedEmoji.includes(filename) ? (filename + '_border') : filename;
 };
 
-const emojifyTextNode = (node, customEmojis) => {
+const emojifyTextNode = (node, customEmojis, bigIcon) => {
   const VS15 = 0xFE0E;
   const VS16 = 0xFE0F;
 
@@ -85,6 +85,10 @@ const emojifyTextNode = (node, customEmojis) => {
       replacement.setAttribute('src', filename);
       replacement.setAttribute('data-original', custom_emoji.url);
       replacement.setAttribute('data-static', custom_emoji.static_url);
+      // カスタム絵文字のみの場合は拡大するスタイルのclassを当てる
+      if (bigIcon !== null) {
+        replacement.classList.add('big_icon');
+      }
     } else { // start of an unicode emoji
       rend = i + unicode_emoji.length;
 
@@ -134,28 +138,28 @@ const emojifyTextNode = (node, customEmojis) => {
   node.parentElement.replaceChild(fragment, node);
 };
 
-const emojifyNode = (node, customEmojis) => {
+const emojifyNode = (node, customEmojis, bigIcon) => {
   for (const child of node.childNodes) {
     switch(child.nodeType) {
     case Node.TEXT_NODE:
-      emojifyTextNode(child, customEmojis);
+      emojifyTextNode(child, customEmojis, bigIcon);
       break;
     case Node.ELEMENT_NODE:
       if (!child.classList.contains('invisible'))
-        emojifyNode(child, customEmojis);
+        emojifyNode(child, customEmojis, bigIcon);
       break;
     }
   }
 };
 
-const emojify = (str, customEmojis = {}) => {
+const emojify = (str, customEmojis = {}, bigIcon = null) => {
   const wrapper = document.createElement('div');
   wrapper.innerHTML = str;
 
   if (!Object.keys(customEmojis).length)
     customEmojis = null;
 
-  emojifyNode(wrapper, customEmojis);
+  emojifyNode(wrapper, customEmojis, bigIcon);
 
   return wrapper.innerHTML;
 };
