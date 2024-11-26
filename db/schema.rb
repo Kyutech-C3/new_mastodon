@@ -981,6 +981,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_27_132728) do
     t.index ["target_account_id"], name: "index_reports_on_target_account_id"
   end
 
+  create_table "request_custom_emojis", force: :cascade do |t|
+    t.integer "state", default: 0, null: false
+    t.string "shortcode", default: "", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at", precision: nil
+    t.integer "image_storage_schema_version"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rule_translations", force: :cascade do |t|
     t.text "text", default: "", null: false
     t.text "hint", default: "", null: false
@@ -1438,6 +1451,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_27_132728) do
   add_foreign_key "reports", "accounts", column: "target_account_id", name: "fk_eb37af34f0", on_delete: :cascade
   add_foreign_key "reports", "accounts", name: "fk_4b81f7522c", on_delete: :cascade
   add_foreign_key "reports", "oauth_applications", column: "application_id", on_delete: :nullify
+  add_foreign_key "request_custom_emojis", "accounts", on_update: :cascade, on_delete: :cascade, validate: false
   add_foreign_key "rule_translations", "rules", on_delete: :cascade
   add_foreign_key "scheduled_statuses", "accounts", on_delete: :cascade
   add_foreign_key "session_activations", "oauth_access_tokens", column: "access_token_id", name: "fk_957e5bda89", on_delete: :cascade
