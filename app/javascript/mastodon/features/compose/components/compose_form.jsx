@@ -24,6 +24,7 @@ import { countableText } from '../util/counter';
 
 import { CharacterCounter } from './character_counter';
 import { EditIndicator } from './edit_indicator';
+import { LiteracyCaution } from './literacy_caution';
 import { NavigationBar } from './navigation_bar';
 import { PollForm } from "./poll_form";
 import { ReplyIndicator } from './reply_indicator';
@@ -308,6 +309,8 @@ class ComposeForm extends ImmutablePureComponent {
             </div>
           </div>
         </div>
+        {/* 投稿フォームの下に注意喚起メッセージを表示 */}
+        <LiteracyCaution />
       </form>
     );
   }
