@@ -205,6 +205,7 @@
   "copy_icon_button.copied": "コピーしました",
   "copypaste.copied": "コピーしました",
   "copypaste.copy_to_clipboard": "クリップボードにコピー",
+  "custom.caution_message": "このMastodonに公開、未収載でトゥートされた内容はすべてインターネット上の誰でも閲覧することができます。\n個人情報、著作権等のネットリテラシーには十分注意してトゥートしましょう。",
   "directory.federated": "既知の連合より",
   "directory.local": "{domain} のみ",
   "directory.new_arrivals": "新着順",
