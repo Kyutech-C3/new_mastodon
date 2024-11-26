@@ -36,6 +36,8 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
     n.item :user_invites, safe_join([material_symbol('person_add'), t('invites.title')]), invites_path, if: -> { current_user.can?(:invite_users) && current_user.functional? && !self_destruct }
+    # 設定メニューの「開発」の上に「カスタム絵文字申請」のリンクを追加
+    n.item :request_custom_emojis, safe_join([material_symbol('mood'), t('settings.request_custom_emojis.title')]), settings_request_custom_emojis_url
     n.item :development, safe_join([material_symbol('code'), t('settings.development')]), settings_applications_path, highlights_on: %r{/settings/applications}, if: -> { current_user.functional? && !self_destruct }
 
     n.item :trends, safe_join([material_symbol('trending_up'), t('admin.trends.title')]), admin_trends_statuses_path, if: -> { current_user.can?(:manage_taxonomies) && !self_destruct } do |s|
