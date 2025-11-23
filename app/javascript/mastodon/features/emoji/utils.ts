@@ -54,19 +54,3 @@ function supportedFlags(flags = '') {
   }
   return flags;
 }
-
-// HTMLになっているcontentを入力したときの文章にだいたい戻す関数
-// TODO: こういう関数作らなくてもありそうなので、あればそちらに差し替える
-const rewrite = (txt: string): string => {
-  // 改行から置き換えられたタグを半角スペースに置き換える
-  let edit_txt = txt.replaceAll('</p><p>', ' ').replaceAll('<br />', ' ')
-  // innerHTMLを使用して不要なタグを取り除く
-  const e = document.createElement('div');
-  e.innerHTML = edit_txt;
-  return e.innerText;
-}
-// カスタム絵文字や空白、改行のみで構成された投稿か判断する
-export const checkOnlyIconStatus = (content: string): boolean => {
-  const trimContent = rewrite(content).trim();
-  return trimContent.match("^:[0-9a-zA-Z_]+:([ 　\r\t\s\n]+:[0-9a-zA-Z_]+:)*$") !== null;
-};
