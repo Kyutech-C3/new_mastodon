@@ -17,7 +17,7 @@ export interface EmojiHTMLProps {
   className?: string;
   onElement?: OnElementHandler;
   onAttribute?: OnAttributeHandler;
-  bigIcon?: boolean;
+  canBigIcon?: boolean;
 }
 
 export const EmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
@@ -29,7 +29,7 @@ export const EmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
       className = '',
       onElement,
       onAttribute,
-      bigIcon = false,
+      canBigIcon = false,
       ...props
     },
     ref,
@@ -37,7 +37,7 @@ export const EmojiHTML = polymorphicForwardRef<'div', EmojiHTMLProps>(
     const contents = useMemo(
       () =>
         htmlStringToComponents(htmlString, {
-          onText: (text: string) => textToEmojis(text, bigIcon),
+          onText: (text: string) => textToEmojis(text, canBigIcon),
           onElement,
           onAttribute,
         }),
