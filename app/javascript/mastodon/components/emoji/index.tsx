@@ -91,14 +91,11 @@ export const Emoji: FC<EmojiProps> = ({
  * Takes a text string and converts it to an array of React nodes.
  * @param text The text to be tokenized and converted.
  */
-export function textToEmojis(text: string) {
-  const tokenizedText = tokenizeText(text);
-  // textを分割したトークンがすべて絵文字なら拡大表示
-  const onlyEmojis = tokenizedText.filter((token) => typeof token === 'string').length === 0;
-  return tokenizedText.map((token, index) => {
+export function textToEmojis(text: string, bigIcon: boolean = false) {
+  return tokenizeText(text).map((token, index) => {
     if (typeof token === 'string') {
       return token;
     }
-    return <Emoji code={token.code} bigIcon={onlyEmojis} key={`emoji-${token.code}-${index}`} />;
+    return <Emoji code={token.code} bigIcon={bigIcon} key={`emoji-${token.code}-${index}`} />;
   });
 }
