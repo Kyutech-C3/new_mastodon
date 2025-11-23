@@ -90,9 +90,15 @@ export const Emoji: FC<EmojiProps> = ({
 /**
  * Takes a text string and converts it to an array of React nodes.
  * @param text The text to be tokenized and converted.
+ * @param canBigIcon 呼び出し元が投稿かどうか(絵文字を拡大する必要があるか)
  */
-export function textToEmojis(text: string, bigIcon: boolean = false) {
-  return tokenizeText(text).map((token, index) => {
+export function textToEmojis(text: string, canBigIcon: boolean = false) {
+  const tokenizedText = tokenizeText(text);
+  // textを分割したトークンがすべて絵文字なら拡大表示
+  const bigIcon = canBigIcon && tokenizedText.filter(
+    (token) => (typeof token === 'string') && (token.match(/^[ 　\r\t\s\n]+$/) === null)
+  ).length === 0;
+  return tokenizedText.map((token, index) => {
     if (typeof token === 'string') {
       return token;
     }
